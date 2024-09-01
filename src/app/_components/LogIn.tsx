@@ -16,7 +16,9 @@ export default function LogIn() {
       {isLoggedIn ? (
         <>
           <button onClick={() => signOut()}>Sign out</button>
-          {name && name.split("").splice(0, 10).join("")}
+          {name && (
+            <p className="user-name">{name.split("").splice(0, 10).join("")}</p>
+          )}
         </>
       ) : (
         <>
