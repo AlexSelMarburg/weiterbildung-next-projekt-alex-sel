@@ -1,0 +1,20 @@
+.log-in {
+  font-size: var(--step-1);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  button {
+    border: none;
+    cursor: pointer;
+    min-width: 7rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: var(--step-1);
+    font-weight: 500;
+
+    &:hover {
+      background-color: var(--accent-color-4);
+    }
+  }
+}

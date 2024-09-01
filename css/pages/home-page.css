@@ -1,0 +1,11 @@
+.home-page {
+  .home-page__bg {
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .home-page__content {
+    position: relative;
+    z-index: 10;
+  }
+}

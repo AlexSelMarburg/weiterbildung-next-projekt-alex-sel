@@ -1,0 +1,50 @@
+:root {
+  --webpage-max-width: 80rem;
+  --base-padding: 0.5rem 1rem;
+  --header-height: 4rem;
+  --footer-height: 4rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  max-width: 80rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--base-padding);
+  padding-top: var(--header-height);
+  height: 100%;
+  flex: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+span.highlight {
+  color: var(--accent-color-2);
+  font-weight: 500;
+  letter-spacing: 1px;
+}

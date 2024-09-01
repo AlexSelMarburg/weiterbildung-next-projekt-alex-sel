@@ -1,0 +1,18 @@
+.main-footer {
+  width: 100%;
+  height: var(--footer-height);
+  z-index: 10;
+
+  .footer-content {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--base-padding);
+    height: 100%;
+    max-width: var(--webpage-max-width);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--footer-bg-color);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

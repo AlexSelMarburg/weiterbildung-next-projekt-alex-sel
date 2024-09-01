@@ -1,0 +1,38 @@
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .info-container {
+    width: 100%;
+    max-width: 40rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    p {
+      margin-bottom: 1rem;
+      font-size: var(--step-1);
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-bottom: 0.5rem;
+
+        a {
+          text-decoration: none;
+          color: var(--accent-color-2);
+          letter-spacing: 1px;
+
+          &:hover {
+            color: var(--accent-color-1);
+          }
+        }
+      }
+    }
+  }
+}
