@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
-import { shortenString } from "@/src/llib/helpers";
+import { shortenString } from "@/lib/helpers";
 
 export default function LogIn() {
   const { data: session } = useSession();
@@ -9,7 +9,7 @@ export default function LogIn() {
   console.log(session);
 
   const isLoggedIn = session ? true : false;
-  const name = shortenString(session?.user?.name ?? "", 10);
+  const name = shortenString(session?.user?.name?.trim() ?? "", 10);
 
   return (
     <div className="log-in">
