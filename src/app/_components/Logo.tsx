@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { MdOutlineMapsHomeWork } from "react-icons/md";
+import { LuPopcorn } from "react-icons/lu";
 
 export default function Logo() {
   return (
     <Link href="/">
       <span className="header-logo">
-        <MdOutlineMapsHomeWork />
+        <LuPopcorn />
       </span>
     </Link>
   );
