@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import altHomeImageURL from "@/public/TEST-img.jpg";
+import altHomeImageURL from "@/public/img/fallback-hero-bg.jpeg";
 import { fetchMovies } from "@/src/app/(pages)/movies/action";
 import { Movie } from "@/types/movie-type";
 
@@ -22,9 +22,37 @@ export default async function HomePage() {
         className="home-page__bg"
         quality={50}
       />
-      <div className="home-page__content">
-        <h1>Home</h1>
-        <p>Lorem ipsum dolor, sit amet consectetur</p>
+      <div className="home-page-content">
+        <div className="left-container">
+          <h1>
+            <span className="highlight">Next.js</span> - Weiterbildung
+            <br />
+            Projekt
+          </h1>
+          <ul>
+            <li>
+              <p>
+                Browse Movies in <span className="highlight">TMDB</span> - The
+                Movie Database - API
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className="highlight">Login</span> to bookmark movies and
+                save your favorites in a Database
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className="highlight">Rate</span> and{" "}
+                <span className="highlight">comment</span> your favorite movies
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div className="right-container">
+          <p>Lorem ipsum</p>
+        </div>
       </div>
     </main>
   );

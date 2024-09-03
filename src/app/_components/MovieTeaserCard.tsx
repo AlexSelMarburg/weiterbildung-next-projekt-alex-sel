@@ -9,7 +9,7 @@ type Props = {
 };
 
 const variants = {
-  hidden: { opacity: 0, scale: 0.95 },
+  hidden: { opacity: 0, scale: 0.96 },
   visible: { opacity: 1, scale: 1 },
 };
 export default function MovieTeaserCard({ movie }: Props) {
@@ -20,7 +20,7 @@ export default function MovieTeaserCard({ movie }: Props) {
       variants={variants}
       initial="hidden"
       animate="visible"
-      transition={{ delay: 0.55, ease: "easeInOut", duration: 0.55 }}
+      transition={{ delay: 0.75, ease: "easeInOut", duration: 0.45 }}
       viewport={{ amount: 0 }}
       className={`movie-teaser-card ${!hasPosterPoster ? "has-no-poster" : ""}`}
     >

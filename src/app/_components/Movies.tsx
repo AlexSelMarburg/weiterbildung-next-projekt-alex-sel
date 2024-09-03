@@ -21,11 +21,14 @@ export default function Movies() {
   return (
     <>
       <MoviesSearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="movies-grid">
-        {movies.map((movie: Movie) => (
-          <MovieTeaserCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+      {movies.length === 0 && searchTerm !== "" && <h3>No movies found!</h3>}
+      {movies.length > 0 && (
+        <div className="movies-grid">
+          {movies.map((movie: Movie) => (
+            <MovieTeaserCard key={movie.id} movie={movie} />
+          ))}
+        </div>
+      )}
       {movies && movies.length > 0 && (
         <LoadAdditionalMovies searchTerm={searchTerm} />
       )}
