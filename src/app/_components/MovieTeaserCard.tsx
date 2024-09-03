@@ -35,6 +35,11 @@ export default function MovieTeaserCard({ movie }: Props) {
         <Link className="link-btn" href={`/movies/${movie.id}`}>
           Details
         </Link>
+        <p className="rating">
+          {movie.vote_average
+            ? `${movie.vote_average.toFixed(1)} / 10`
+            : "k.A."}
+        </p>
       </div>
     </div>
   );

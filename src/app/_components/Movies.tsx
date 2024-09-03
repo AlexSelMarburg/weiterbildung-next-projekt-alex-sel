@@ -1,11 +1,13 @@
 "use client";
 
 import MoviesSearchForm from "./MoviesSearchForm";
-import { fetchMovies } from "@/lib/fetchMovies";
+// import { fetchMovies } from "@/lib/fetchMovies";
+import { fetchMovies } from "../(pages)/movies/action";
 import { useDebouncedValue } from "@/lib/hooks/useDebouncedValue";
 import { Movie } from "@/types/movie-type";
 import { Dispatch, useEffect, useState } from "react";
 import MovieTeaserCard from "./MovieTeaserCard";
+import LoadAdditionalMovies from "./LoadAdditionalMovies";
 
 export const revalidate = 600;
 
@@ -20,10 +22,13 @@ export default function Movies() {
     <>
       <MoviesSearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <div className="movies-grid">
-        {movies.map((movie: any) => (
+        {movies.map((movie: Movie) => (
           <MovieTeaserCard key={movie.id} movie={movie} />
         ))}
       </div>
+      {movies && movies.length > 0 && (
+        <LoadAdditionalMovies searchTerm={searchTerm} />
+      )}
     </>
   );
 }
@@ -34,8 +39,8 @@ function useMoviesSearch(
 ) {
   useEffect(() => {
     const getMovies = async () => {
-      const moviesResponse = await fetchMovies(debouncedTerm);
-      setMovies(moviesResponse);
+      const { movies } = await fetchMovies(debouncedTerm);
+      setMovies(movies);
     };
     getMovies();
   }, [debouncedTerm, setMovies]);

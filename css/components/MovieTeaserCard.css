@@ -43,5 +43,16 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+    .rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: var(--primary-font-color);
+      background-color: var(--bg-color);
+    }
   }
 }

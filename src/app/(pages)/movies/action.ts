@@ -1,3 +1,4 @@
+"use server";
 import { Movie } from "@/types/movie-type";
 import axios from "redaxios";
 
@@ -5,7 +6,7 @@ const fetchMoviesData = axios.create({
   baseURL: "https://api.themoviedb.org/3",
 });
 
-export const fetchMovies = async (searchTerm: string, page = 1) => {
+export const fetchMovies = async (searchTerm = "", page = 1) => {
   try {
     const showNowPlaying = searchTerm.length < 2;
     const { data } = await fetchMoviesData.get(
@@ -14,16 +15,19 @@ export const fetchMovies = async (searchTerm: string, page = 1) => {
         params: {
           api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
           query: showNowPlaying ? "" : searchTerm,
-          language: "de-DE",
+          // language: "de-DE",
           page: page,
         },
       }
     );
 
-    return data.results as Movie[];
+    return {
+      movies: data.results as Movie[],
+      pages: data.total_pages as number,
+    };
   } catch (error) {
     console.error(error);
-    return [];
+    return { movies: [], pages: 0 };
   }
 };
 
@@ -45,8 +49,6 @@ export async function fetchMovieVideos(id: string) {
       // language: "de-DE",
     },
   });
-
-  console.log("VIDEOS::::", data.results);
 
   return data.results || [];
 }

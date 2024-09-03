@@ -1,4 +1,4 @@
-import { fetchMovie, fetchMovieVideos } from "@/lib/fetchMovies";
+import { fetchMovie, fetchMovieVideos } from "@/src/app/(pages)/movies/action";
 import MovieTrailerIFrame from "@/src/app/_components/MovieTrailerIFrame";
 import { DetailedMovie, VideoData } from "@/types/movie-type";
 import { Metadata } from "next";
@@ -40,6 +40,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt="test"
                 fill
+                sizes="(100vw - 2rem) 100vh"
               />
             )}
 

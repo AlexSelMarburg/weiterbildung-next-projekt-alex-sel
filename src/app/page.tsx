@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 import altHomeImageURL from "@/public/TEST-img.jpg";
-import { fetchMovies } from "@/lib/fetchMovies";
+import { fetchMovies } from "@/src/app/(pages)/movies/action";
 import { Movie } from "@/types/movie-type";
 
 export default async function HomePage() {
-  const newMovies: Movie[] = await fetchMovies("");
-  const firstMovieHasBackdrop = newMovies.find((movie) => movie.backdrop_path);
+  const { movies } = await fetchMovies("");
+  const firstMovieHasBackdrop = movies.find((movie) => movie.backdrop_path);
 
   return (
     <main className="home-page">
