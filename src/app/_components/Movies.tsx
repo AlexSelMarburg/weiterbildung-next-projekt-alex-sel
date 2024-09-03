@@ -7,6 +7,8 @@ import { Movie } from "@/types/movie-type";
 import { Dispatch, useEffect, useState } from "react";
 import MovieTeaserCard from "./MovieTeaserCard";
 
+export const revalidate = 600;
+
 export default function Movies() {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedTerm = useDebouncedValue(searchTerm, 600);

@@ -30,6 +30,8 @@
         color: var(--light-grey-color);
         font-size: var(--step-1);
 
+        text-shadow: 0 0 4px rgba(0, 0, 0, 0.85);
+
         &:hover {
           color: white;
         }

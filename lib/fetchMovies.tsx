@@ -8,7 +8,7 @@ const fetchMoviesData = axios.create({
 export const fetchMovies = async (searchTerm: string, page = 1) => {
   try {
     const showNowPlaying = searchTerm.length < 2;
-    const allData = await fetchMoviesData.get(
+    const { data } = await fetchMoviesData.get(
       `/${showNowPlaying ? "movie/now_playing" : "search/movie"}`,
       {
         params: {
@@ -20,9 +20,6 @@ export const fetchMovies = async (searchTerm: string, page = 1) => {
       }
     );
 
-    console.log("allData", allData);
-
-    const { data } = allData;
     return data.results as Movie[];
   } catch (error) {
     console.error(error);
