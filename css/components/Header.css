@@ -23,7 +23,7 @@
   .header-content {
     border-bottom: 2px solid transparent;
     padding: var(--base-padding);
-    padding-left: 5px;
+    padding-left: 10px;
     height: 100%;
     max-width: var(--webpage-max-width);
     display: flex;

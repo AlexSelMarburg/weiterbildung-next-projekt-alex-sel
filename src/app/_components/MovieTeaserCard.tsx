@@ -20,6 +20,7 @@ export default function MovieTeaserCard({ movie }: Props) {
           fill
           sizes="(100vw - 20px)"
           className="movie-teaser-card__image"
+          quality={30}
         />
       )}
 

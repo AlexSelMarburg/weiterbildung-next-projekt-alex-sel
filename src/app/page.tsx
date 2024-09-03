@@ -18,6 +18,7 @@ export default async function HomePage() {
         }
         alt="test"
         fill
+        priority={true}
         className="home-page__bg"
         quality={40}
       />

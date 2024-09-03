@@ -1,4 +1,6 @@
 .home-page {
+  position: relative;
+
   .home-page__bg {
     object-fit: cover;
     object-position: top;
