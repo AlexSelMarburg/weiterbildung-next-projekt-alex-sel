@@ -1,0 +1,10 @@
+.movies-grid {
+  min-height: calc(
+    100vh - var(--top-container-height) - var(--navbar-height) - 10px
+  );
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  place-items: center;
+  gap: 15px;
+}

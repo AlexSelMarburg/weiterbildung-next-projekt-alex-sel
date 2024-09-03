@@ -16,12 +16,12 @@ export const linkTargets = [
     url: "/",
   },
   {
-    text: "Content",
-    url: "/content",
+    text: "Filme",
+    url: "/movies",
   },
   {
-    text: "About",
-    url: "/about",
+    text: "Bookmarks",
+    url: "/bookmarks",
   },
 ] satisfies LinkTarget[];
 

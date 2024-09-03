@@ -1,0 +1,29 @@
+.movie-teaser-card {
+  width: 100%;
+  aspect-ratio: 4 / 6;
+  overflow: hidden;
+  background-color: var(--footer-bg-color);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    color: var(--accent-color-3);
+  }
+
+  &.has-no-poster {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+  }
+
+  .movie-teaser-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

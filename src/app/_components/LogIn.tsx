@@ -15,14 +15,21 @@ export default function LogIn() {
     <div className="log-in">
       {isLoggedIn ? (
         <>
-          <button onClick={() => signOut()}>Sign out</button>
-          {name && (
-            <p className="user-name">{name.split("").splice(0, 10).join("")}</p>
-          )}
+          <button
+            className="button"
+            onClick={() => {
+              signOut();
+            }}
+          >
+            Sign out
+          </button>
+          {name && <p className="user-name">{name}</p>}
         </>
       ) : (
         <>
-          <button onClick={() => signIn()}>Sign in</button>
+          <button className="button" onClick={() => signIn()}>
+            Sign in
+          </button>
         </>
       )}
     </div>

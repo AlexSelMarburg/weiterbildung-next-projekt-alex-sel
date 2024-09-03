@@ -48,3 +48,24 @@ span.highlight {
   font-weight: 500;
   letter-spacing: 1px;
 }
+
+.button {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: var(--step-1);
+  font-weight: 500;
+  background-color: var(--accent-color-2);
+  color: var(--primary-font-color);
+  text-shadow: 1px 1px 1px #000;
+
+  &:hover {
+    background-color: var(--accent-color-4);
+    color: var(--bg-color);
+    text-shadow: none;
+  }
+}
