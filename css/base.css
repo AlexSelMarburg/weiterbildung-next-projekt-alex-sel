@@ -1,5 +1,5 @@
 :root {
-  --webpage-max-width: 80rem;
+  --webpage-max-width: 90rem;
   --base-padding: 0.5rem 1rem;
   --header-height: 4rem;
   --footer-height: 4rem;
@@ -28,7 +28,7 @@ body {
 }
 
 main {
-  max-width: 80rem;
+  max-width: var(--webpage-max-width);
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -67,5 +67,19 @@ span.highlight {
     background-color: var(--accent-color-4);
     color: var(--bg-color);
     text-shadow: none;
+  }
+}
+
+.link-btn {
+  background-color: var(--accent-color-4);
+  padding: 5px 8px;
+  color: var(--bg-color);
+  letter-spacing: 1px;
+  font-weight: 600;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: var(--accent-color-2);
+    color: var(--primary-font-color);
   }
 }

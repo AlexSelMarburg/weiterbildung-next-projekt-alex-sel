@@ -14,3 +14,22 @@ export type Movie = {
   vote_average: number;
   vote_count: number;
 };
+
+export type VideoData = {
+  site: string;
+  key: string;
+  official: boolean;
+  type: string;
+};
+
+export type DetailedMovie = {
+  id: string;
+  title: string;
+  original_title: string;
+  overview: string;
+  genres: [{ name: string }];
+  poster_path: string;
+  vote_average: number;
+  release_date: string;
+  runtime: number;
+};

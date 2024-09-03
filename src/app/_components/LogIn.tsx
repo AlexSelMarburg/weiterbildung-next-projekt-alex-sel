@@ -5,9 +5,6 @@ import { shortenString } from "@/lib/helpers";
 
 export default function LogIn() {
   const { data: session } = useSession();
-
-  console.log(session);
-
   const isLoggedIn = session ? true : false;
   const name = shortenString(session?.user?.name?.trim() ?? "", 10);
 

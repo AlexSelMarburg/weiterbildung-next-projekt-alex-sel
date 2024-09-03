@@ -1,0 +1,26 @@
+.iframe-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .movie-trailer-iframe {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+
+    border: none;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .iframe-container {
+    display: grid;
+    place-items: center;
+    display: flex;
+    justify-content: flex-start;
+
+    .movie-trailer-iframe {
+      width: 94dvw;
+    }
+  }
+}

@@ -27,7 +27,8 @@ h4,
 h5,
 h6 {
   font-family: var(--font-nunito);
-  color: var(--heading-font-color);
+  /* color: var(--heading-font-color); */
+  color: var(--accent-color-3);
   letter-spacing: 2px;
   font-weight: 500;
 }

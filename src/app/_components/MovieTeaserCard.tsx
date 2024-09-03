@@ -1,6 +1,7 @@
 import { shortenString } from "@/lib/helpers";
 import { Movie } from "@/types/movie-type";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   movie: Movie;
@@ -28,6 +29,12 @@ export default function MovieTeaserCard({ movie }: Props) {
           <p>(kein Poster vorhanden)</p>
         </>
       )}
+
+      <div className="actions">
+        <Link className="link-btn" href={`/movies/${movie.id}`}>
+          Details
+        </Link>
+      </div>
     </div>
   );
 }

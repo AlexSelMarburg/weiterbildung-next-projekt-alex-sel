@@ -5,20 +5,24 @@ const fetchMoviesData = axios.create({
   baseURL: "https://api.themoviedb.org/3",
 });
 
-const fetchMovies = async (searchTerm: string) => {
+export const fetchMovies = async (searchTerm: string, page = 1) => {
   try {
     const showNowPlaying = searchTerm.length < 2;
-    const { data } = await fetchMoviesData.get(
+    const allData = await fetchMoviesData.get(
       `/${showNowPlaying ? "movie/now_playing" : "search/movie"}`,
       {
         params: {
           api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
           query: showNowPlaying ? "" : searchTerm,
+          language: "de-DE",
+          page: page,
         },
       }
     );
 
-    console.log("data", data);
+    console.log("allData", allData);
+
+    const { data } = allData;
     return data.results as Movie[];
   } catch (error) {
     console.error(error);
@@ -26,4 +30,26 @@ const fetchMovies = async (searchTerm: string) => {
   }
 };
 
-export default fetchMovies;
+export async function fetchMovie(id: string) {
+  const { data } = await fetchMoviesData.get(`movie/${id}`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+      language: "de-DE",
+    },
+  });
+
+  return data;
+}
+
+export async function fetchMovieVideos(id: string) {
+  const { data } = await fetchMoviesData.get(`movie/${id}/videos`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+      // language: "de-DE",
+    },
+  });
+
+  console.log("VIDEOS::::", data.results);
+
+  return data.results || [];
+}

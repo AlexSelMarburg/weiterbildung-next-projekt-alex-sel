@@ -1,7 +1,7 @@
 "use client";
 
 import MoviesSearchForm from "./MoviesSearchForm";
-import fetchMovies from "@/lib/fetchMovies";
+import { fetchMovies } from "@/lib/fetchMovies";
 import { useDebouncedValue } from "@/lib/hooks/useDebouncedValue";
 import { Movie } from "@/types/movie-type";
 import { Dispatch, useEffect, useState } from "react";
