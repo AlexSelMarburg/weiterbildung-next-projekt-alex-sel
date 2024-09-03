@@ -26,8 +26,6 @@ export default async function MovieDetails({ params: { id } }: Props) {
     )
     ?.splice(0, 4);
 
-  console.log("MOVIE-VIDEOS::::", videos);
-
   return (
     <div className="movie-details-page">
       <div className="movie-details">
@@ -41,6 +39,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
                 alt="test"
                 fill
                 sizes="(100vw - 2rem) 100vh"
+                quality={30}
               />
             )}
 
@@ -73,7 +72,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
 
             <p>
               <span className="highlight">Bewertung:</span>{" "}
-              {movie.vote_average.toFixed(2)} / 10
+              {movie.vote_average.toFixed(1)} / 10
             </p>
           </div>
 

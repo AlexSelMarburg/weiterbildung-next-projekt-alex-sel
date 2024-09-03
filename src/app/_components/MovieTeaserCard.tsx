@@ -2,15 +2,26 @@ import { shortenString } from "@/lib/helpers";
 import { Movie } from "@/types/movie-type";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 type Props = {
   movie: Movie;
+};
+
+const variants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1 },
 };
 export default function MovieTeaserCard({ movie }: Props) {
   const hasPosterPoster = movie.poster_path !== null;
 
   return (
-    <div
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      transition={{ delay: 0.55, ease: "easeInOut", duration: 0.55 }}
+      viewport={{ amount: 0 }}
       className={`movie-teaser-card ${!hasPosterPoster ? "has-no-poster" : ""}`}
     >
       {hasPosterPoster && (
@@ -41,6 +52,6 @@ export default function MovieTeaserCard({ movie }: Props) {
             : "k.A."}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

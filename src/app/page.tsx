@@ -20,7 +20,7 @@ export default async function HomePage() {
         fill
         priority={true}
         className="home-page__bg"
-        quality={40}
+        quality={50}
       />
       <div className="home-page__content">
         <h1>Home</h1>
