@@ -9,7 +9,7 @@ import { Dispatch, useEffect, useState } from "react";
 import MovieTeaserCard from "./MovieTeaserCard";
 import LoadAdditionalMovies from "./LoadAdditionalMovies";
 
-export const revalidate = 600;
+export const revalidate = 300;
 
 export default function Movies() {
   const [searchTerm, setSearchTerm] = useState("");

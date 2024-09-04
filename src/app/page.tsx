@@ -2,7 +2,8 @@ import Image from "next/image";
 
 import altHomeImageURL from "@/public/img/fallback-hero-bg.jpeg";
 import { fetchMovies } from "@/src/app/(pages)/movies/action";
-import { Movie } from "@/types/movie-type";
+
+export const revalidate = 600;
 
 export default async function HomePage() {
   const { movies } = await fetchMovies("");
