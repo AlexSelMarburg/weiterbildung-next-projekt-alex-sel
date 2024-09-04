@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 import { fetchMovie, fetchMovieVideos } from "@/src/app/(pages)/movies/action";
 
-import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
+// import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
 // import SetBookMarkForm from "@/src/app/_components/SetBookMarkForm";
 type Props = {
   params: {
@@ -19,9 +19,9 @@ export default async function MovieDetails({ params: { id } }: Props) {
   const movie: DetailedMovie = await fetchMovie(id);
   const session = await getServerSession();
 
-  if (session?.user?.email) {
-    await checkIfUserExists(session.user.email);
-  }
+  // if (session?.user?.email) {
+  //   await checkIfUserExists(session.user.email);
+  // }
 
   const genres = movie.genres
     .map((genre: { name: string }) => genre.name)
@@ -88,7 +88,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
           <Link className="default-link" href={`/movies`}>
             Zurück zu der Filmsuche
           </Link>
-          <div className="raiting-container">
+          {/* <div className="raiting-container">
             {session && session.user?.email && movie ? (
               <div className="logged-in-user">
                 <p>
@@ -96,7 +96,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
                   <span className="highlight">{session.user?.name}</span>
                 </p>
 
-                {/* <div className="login-form">
+                <div className="login-form">
                   {(await isBookmarkedMovie(session.user?.email, movie.id)) ? (
                     <FaBookmark />
                   ) : (
@@ -106,7 +106,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
                     movieID={movie.id}
                     userEmail={session.user?.email}
                   />
-                </div> */}
+                </div>
               </div>
             ) : (
               <div className="no-logged-in-user">
@@ -116,7 +116,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
                 </p>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
 
