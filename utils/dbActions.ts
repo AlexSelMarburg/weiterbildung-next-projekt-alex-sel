@@ -37,15 +37,6 @@ export async function createBookmark(userEmail: string, movieID: number) {
   });
 }
 
-// export async function deleteBookmark(userEmail: string, movieID: number) {
-//   await prisma.bookmarkedMovie.delete({
-//     where: {
-//       userEmail,
-//       movieID,
-//     },
-//   });
-// }
-
 export async function deleteBookmark(userEmail: string, movieID: number) {
   await prisma.bookmarkedMovie.deleteMany({
     where: {
