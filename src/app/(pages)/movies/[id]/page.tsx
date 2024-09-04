@@ -96,17 +96,17 @@ export default async function MovieDetails({ params: { id } }: Props) {
                   <span className="highlight">{session.user?.name}</span>
                 </p>
 
-                <div className="login-form">
+                {/* <div className="login-form">
                   {(await isBookmarkedMovie(session.user?.email, movie.id)) ? (
                     <FaBookmark />
                   ) : (
                     <FaRegBookmark />
                   )}
-                  {/* <SetBookMarkForm
+                  <SetBookMarkForm
                     movieID={movie.id}
                     userEmail={session.user?.email}
-                  /> */}
-                </div>
+                  />
+                </div> */}
               </div>
             ) : (
               <div className="no-logged-in-user">
