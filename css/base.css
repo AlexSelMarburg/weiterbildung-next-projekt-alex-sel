@@ -68,6 +68,23 @@ span.highlight {
     color: var(--bg-color);
     text-shadow: none;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.default-link {
+  color: var(--accent-color-1);
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-shadow: 1px 1px 1px #000;
+
+  &:hover {
+    color: var(--accent-color-4);
+    text-shadow: none;
+  }
 }
 
 .link-btn {

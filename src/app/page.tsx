@@ -21,7 +21,7 @@ export default async function HomePage() {
         fill
         priority={true}
         className="home-page__bg"
-        quality={50}
+        quality={60}
       />
       <div className="home-page-content">
         <div className="left-container">

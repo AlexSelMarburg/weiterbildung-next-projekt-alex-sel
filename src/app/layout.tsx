@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import ScrollToTopButton from "./_components/ScrollToTopButton";
 import { getServerSession } from "next-auth";
 import SessionProvider from "./_components/SessionProvider";
+import ToastProvider from "./toastProvider";
 
 const nunitoStyle = Nunito({
   subsets: ["latin"],
@@ -44,7 +45,9 @@ export default async function RootLayout({
           <Header />
           <ScrollToTopButton />
 
-          <div className="site-content">{children}</div>
+          <div className="site-content">
+            <ToastProvider>{children}</ToastProvider>
+          </div>
         </SessionProvider>
       </body>
     </html>

@@ -5,7 +5,9 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
-import { checkIfUserExists } from "@/utils/dbActions";
+import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
+import SetBookMarkForm from "@/src/app/_components/SetBookMarkForm";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 
 type Props = {
   params: {
@@ -83,23 +85,33 @@ export default async function MovieDetails({ params: { id } }: Props) {
             </p>
           </div>
 
-          <Link className="link-btn" href={`/movies`}>
+          <Link className="default-link" href={`/movies`}>
             Zurück zu der Filmsuche
           </Link>
           <div className="raiting-container">
-            {session ? (
+            {session && session.user?.email && movie ? (
               <div className="logged-in-user">
                 <p>
                   Eingeloggt als{" "}
                   <span className="highlight">{session.user?.name}</span>
                 </p>
 
-                <button className="button">Lesezeichen erstellen </button>
+                <div className="login-form">
+                  {(await isBookmarkedMovie(session.user?.email, movie.id)) ? (
+                    <FaBookmark />
+                  ) : (
+                    <FaRegBookmark />
+                  )}
+                  <SetBookMarkForm
+                    movieID={movie.id}
+                    userEmail={session.user?.email}
+                  />
+                </div>
               </div>
             ) : (
               <div className="no-logged-in-user">
                 <p>
-                  Um ein Lesezeichen zu erstellen musst du{" "}
+                  Um ein Lesezeichen zu setzen musst du{" "}
                   <span className="highlight">angemeldet</span> sein!
                 </p>
               </div>

@@ -23,7 +23,7 @@ export type VideoData = {
 };
 
 export type DetailedMovie = {
-  id: string;
+  id: number;
   title: string;
   original_title: string;
   overview: string;
