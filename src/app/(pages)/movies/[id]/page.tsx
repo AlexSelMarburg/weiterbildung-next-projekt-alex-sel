@@ -1,14 +1,14 @@
-import { fetchMovie, fetchMovieVideos } from "@/src/app/(pages)/movies/action";
 import MovieTrailerIFrame from "@/src/app/_components/MovieTrailerIFrame";
 import { DetailedMovie, VideoData } from "@/types/movie-type";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
-import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
-import SetBookMarkForm from "@/src/app/_components/SetBookMarkForm";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
+import { fetchMovie, fetchMovieVideos } from "@/src/app/(pages)/movies/action";
 
+import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
+// import SetBookMarkForm from "@/src/app/_components/SetBookMarkForm";
 type Props = {
   params: {
     id: string;
@@ -102,10 +102,10 @@ export default async function MovieDetails({ params: { id } }: Props) {
                   ) : (
                     <FaRegBookmark />
                   )}
-                  <SetBookMarkForm
+                  {/* <SetBookMarkForm
                     movieID={movie.id}
                     userEmail={session.user?.email}
-                  />
+                  /> */}
                 </div>
               </div>
             ) : (
