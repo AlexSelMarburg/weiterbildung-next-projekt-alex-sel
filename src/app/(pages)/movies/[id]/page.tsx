@@ -9,6 +9,7 @@ import { fetchMovie, fetchMovieVideos } from "@/src/app/(pages)/movies/action";
 
 import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
 import SetBookMarkForm from "@/src/app/_components/SetBookMarkForm";
+import { notFound } from "next/navigation";
 type Props = {
   params: {
     id: string;
@@ -19,9 +20,9 @@ export default async function MovieDetails({ params: { id } }: Props) {
   const movie: DetailedMovie = await fetchMovie(id);
   const session = await getServerSession();
 
-  // if (session?.user?.email) {
-  //   await checkIfUserExists(session.user.email);
-  // }
+  if (session?.user?.email) {
+    await checkIfUserExists(session.user.email);
+  }
 
   const genres = movie.genres
     .map((genre: { name: string }) => genre.name)
@@ -36,7 +37,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
     ?.splice(0, 4);
 
   return (
-    <div className="movie-details-page">
+    <main className="movie-details-page">
       <div className="movie-details">
         <div className="left-container">
           <div
@@ -130,7 +131,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }
 

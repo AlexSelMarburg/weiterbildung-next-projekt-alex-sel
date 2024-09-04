@@ -29,7 +29,15 @@ export type DetailedMovie = {
   overview: string;
   genres: [{ name: string }];
   poster_path: string;
+  backdrop_path: string;
   vote_average: number;
   release_date: string;
   runtime: number;
+};
+
+export type BookmarkedMovie = {
+  movieID: number;
+  userEmail: string;
+  raiting: number | null;
+  raited: boolean;
 };

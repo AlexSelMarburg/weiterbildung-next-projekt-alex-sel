@@ -7,14 +7,18 @@ import { Movie } from "@/types/movie-type";
 import { Dispatch, useEffect, useState } from "react";
 import MovieTeaserCard from "./MovieTeaserCard";
 import LoadAdditionalMovies from "./LoadAdditionalMovies";
+import { BookmarkedMovie } from "@prisma/client";
 
 export const revalidate = 300;
 
-export default function Movies() {
+export default function Movies({
+  bookmarks = [],
+}: {
+  bookmarks: BookmarkedMovie[];
+}) {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedTerm = useDebouncedValue(searchTerm, 600);
   const [movies, setMovies] = useState<Movie[]>([]);
-
   useMoviesSearch(debouncedTerm, setMovies);
 
   return (
@@ -23,13 +27,24 @@ export default function Movies() {
       {movies.length === 0 && searchTerm !== "" && <h3>No movies found!</h3>}
       {movies.length > 0 && (
         <div className="movies-grid">
-          {movies.map((movie: Movie) => (
-            <MovieTeaserCard key={movie.id} movie={movie} />
-          ))}
+          {movies
+            // .filter(
+            //   (movie: Movie) =>
+            //     !bookmarks.some((bookmark) => bookmark.movieID === movie.id)
+            // )
+            .map((movie: Movie) => (
+              <MovieTeaserCard
+                key={movie.id}
+                movie={movie}
+                isBookmarked={bookmarks.some(
+                  (bookmark) => bookmark.movieID === movie.id
+                )}
+              />
+            ))}
         </div>
       )}
       {movies && movies.length > 0 && (
-        <LoadAdditionalMovies searchTerm={searchTerm} />
+        <LoadAdditionalMovies searchTerm={searchTerm} bookmarks={bookmarks} />
       )}
     </>
   );

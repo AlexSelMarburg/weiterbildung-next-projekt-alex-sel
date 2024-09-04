@@ -17,23 +17,15 @@ datasource db {
 model User {
   email           String            @id @unique
   bookmarkedMovie BookmarkedMovie[]
-  rating          Rating[]
 }
 
 model BookmarkedMovie {
   movieID   Int
   userEmail String
+  raiting   Int?
+  raited    Boolean @default(false)
 
   User User @relation(fields: [userEmail], references: [email])
 
   @@id([movieID, userEmail])
-}
-
-model Rating {
-  id        String  @id @default(cuid())
-  rated     Boolean @default(false)
-  rating    Int?
-  User      User    @relation(fields: [userEmail], references: [email])
-  userEmail String
-  movieID   Int
 }

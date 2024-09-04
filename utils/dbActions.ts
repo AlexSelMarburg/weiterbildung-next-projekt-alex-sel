@@ -90,3 +90,12 @@ export async function formToggleBookmark(
     return { message: "Ein Fehler ist aufgetreten!", status: 500 };
   }
 }
+
+export async function getAllUserBookmarks(userEmail: string) {
+  const bookmarks = await prisma.bookmarkedMovie.findMany({
+    where: {
+      userEmail,
+    },
+  });
+  return bookmarks;
+}

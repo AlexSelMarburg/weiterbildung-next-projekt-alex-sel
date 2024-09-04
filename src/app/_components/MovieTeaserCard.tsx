@@ -3,16 +3,18 @@ import { Movie } from "@/types/movie-type";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaBookmark } from "react-icons/fa6";
 
 type Props = {
   movie: Movie;
+  isBookmarked: boolean;
 };
 
 const variants = {
   hidden: { opacity: 0, scale: 0.96 },
   visible: { opacity: 1, scale: 1 },
 };
-export default function MovieTeaserCard({ movie }: Props) {
+export default function MovieTeaserCard({ movie, isBookmarked }: Props) {
   const hasPosterPoster = movie.poster_path !== null;
 
   return (
@@ -24,6 +26,7 @@ export default function MovieTeaserCard({ movie }: Props) {
       viewport={{ amount: 0 }}
       className={`movie-teaser-card ${!hasPosterPoster ? "has-no-poster" : ""}`}
     >
+      {isBookmarked && <FaBookmark className="bookmark-icon" />}
       {hasPosterPoster && (
         <Image
           src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

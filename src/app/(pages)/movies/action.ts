@@ -1,5 +1,6 @@
 "use server";
 import { Movie } from "@/types/movie-type";
+import { notFound } from "next/navigation";
 import axios from "redaxios";
 
 const fetchMoviesData = axios.create({
@@ -32,14 +33,19 @@ export const fetchMovies = async (searchTerm = "", page = 1) => {
 };
 
 export async function fetchMovie(id: string) {
-  const { data } = await fetchMoviesData.get(`movie/${id}`, {
-    params: {
-      api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
-      language: "de-DE",
-    },
-  });
+  try {
+    const { data } = await fetchMoviesData.get(`movie/${id}`, {
+      params: {
+        api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+        language: "de-DE",
+      },
+    });
 
-  return data;
+    return data;
+  } catch (error) {
+    console.error(error);
+    notFound();
+  }
 }
 
 export async function fetchMovieVideos(id: string) {

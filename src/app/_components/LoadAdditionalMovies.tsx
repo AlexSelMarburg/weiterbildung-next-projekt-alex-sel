@@ -6,10 +6,17 @@ import { Movie } from "@/types/movie-type";
 import MovieTeaserCard from "./MovieTeaserCard";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
+import type { BookmarkedMovie } from "@prisma/client";
 
 let page = 2;
 
-export default function LoadAdditionalMovies({ searchTerm = "" }) {
+export default function LoadAdditionalMovies({
+  searchTerm = "",
+  bookmarks = [],
+}: {
+  bookmarks: BookmarkedMovie[];
+  searchTerm: string;
+}) {
   const { ref, inView } = useInView({});
   const [data, setMovies] = useState<{ movies: Movie[]; pages: number }>({
     movies: [],
@@ -40,7 +47,13 @@ export default function LoadAdditionalMovies({ searchTerm = "" }) {
     <>
       <div className="movies-grid">
         {data.movies.map((movie: Movie, index) => (
-          <MovieTeaserCard key={movie.id + index + ""} movie={movie} />
+          <MovieTeaserCard
+            key={movie.id + index + ""}
+            movie={movie}
+            isBookmarked={bookmarks.some(
+              (bookmark) => bookmark.movieID === movie.id
+            )}
+          />
         ))}
       </div>
 
