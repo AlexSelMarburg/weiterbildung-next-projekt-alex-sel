@@ -1,6 +1,6 @@
 "use server";
 
-import { User } from "@prisma/client";
+import type { User } from "@prisma/client";
 import prisma from "../prisma/db";
 import { revalidatePath } from "next/cache";
 
@@ -73,8 +73,6 @@ export async function formToggleBookmark(
   prevState: unknown,
   formData: FormData
 ) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   try {
     const movieID = Number(formData.get("movieID"));
     const userEmail = String(formData.get("userEmail"));
