@@ -54,6 +54,23 @@
           margin-right: 1rem;
         }
       }
+
+      .raiting-container {
+        margin-top: 1rem;
+        width: 100%;
+        min-height: 10rem;
+        /* background-color: gray; */
+
+        .no-logged-in-user {
+          p {
+            color: var(--warning-color);
+
+            span {
+              font-weight: 600;
+            }
+          }
+        }
+      }
     }
   }
 

@@ -5,7 +5,6 @@ import Header from "./_components/Header";
 import type { ReactNode } from "react";
 import ScrollToTopButton from "./_components/ScrollToTopButton";
 import { getServerSession } from "next-auth";
-import SeissionProvider from "./_components/SessionProvider";
 import SessionProvider from "./_components/SessionProvider";
 
 const nunitoStyle = Nunito({

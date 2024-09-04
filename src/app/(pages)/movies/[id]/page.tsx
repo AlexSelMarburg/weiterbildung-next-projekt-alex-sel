@@ -4,6 +4,8 @@ import { DetailedMovie, VideoData } from "@/types/movie-type";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { checkIfUserExists } from "@/utils/dbActions";
 
 type Props = {
   params: {
@@ -13,6 +15,11 @@ type Props = {
 
 export default async function MovieDetails({ params: { id } }: Props) {
   const movie: DetailedMovie = await fetchMovie(id);
+  const session = await getServerSession();
+
+  if (session?.user?.email) {
+    await checkIfUserExists(session.user.email);
+  }
 
   const genres = movie.genres
     .map((genre: { name: string }) => genre.name)
@@ -79,8 +86,28 @@ export default async function MovieDetails({ params: { id } }: Props) {
           <Link className="link-btn" href={`/movies`}>
             Zurück zu der Filmsuche
           </Link>
+          <div className="raiting-container">
+            {session ? (
+              <div className="logged-in-user">
+                <p>
+                  Eingeloggt als{" "}
+                  <span className="highlight">{session.user?.name}</span>
+                </p>
+
+                <button className="button">Lesezeichen erstellen </button>
+              </div>
+            ) : (
+              <div className="no-logged-in-user">
+                <p>
+                  Um ein Lesezeichen zu erstellen musst du{" "}
+                  <span className="highlight">angemeldet</span> sein!
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
+
       {videos.length > 0 && (
         <div className="trailers">
           <h4>Trailer</h4>
