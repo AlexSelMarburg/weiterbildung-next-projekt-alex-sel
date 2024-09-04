@@ -14,14 +14,18 @@ datasource db {
 }
 
 model User {
-  email   String    @id @unique
-  Rating  Rating[]
-  Comment Comment[]
+  email           String            @id @unique
+  BookmarkedMovie BookmarkedMovie[]
+  Rating          Rating[]
 }
 
 model BookmarkedMovie {
-  movieID   Int    @id
+  movieID   Int
   userEmail String
+
+  User User @relation(fields: [userEmail], references: [email])
+
+  @@id([movieID, userEmail])
 }
 
 model Rating {
@@ -33,10 +37,10 @@ model Rating {
   movieID   Int
 }
 
-model Comment {
-  id        String @id @default(cuid())
-  comment   String
-  User      User   @relation(fields: [userEmail], references: [email])
-  userEmail String
-  movieID   Int
-}
+// model Comment {
+//   id        String @id @default(cuid())
+//   comment   String
+//   User      User   @relation(fields: [userEmail], references: [email])
+//   userEmail String
+//   movieID   Int
+// }
