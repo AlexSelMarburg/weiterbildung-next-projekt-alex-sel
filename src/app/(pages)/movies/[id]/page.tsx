@@ -7,8 +7,8 @@ import { getServerSession } from "next-auth";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa6";
 import { fetchMovie, fetchMovieVideos } from "@/src/app/(pages)/movies/action";
 
-// import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
-// import SetBookMarkForm from "@/src/app/_components/SetBookMarkForm";
+import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
+import SetBookMarkForm from "@/src/app/_components/SetBookMarkForm";
 type Props = {
   params: {
     id: string;
