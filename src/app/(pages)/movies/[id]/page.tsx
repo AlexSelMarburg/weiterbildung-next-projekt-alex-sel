@@ -88,7 +88,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
           <Link className="default-link" href={`/movies`}>
             Zurück zu der Filmsuche
           </Link>
-          {/* <div className="raiting-container">
+          <div className="raiting-container">
             {session && session.user?.email && movie ? (
               <div className="logged-in-user">
                 <p>
@@ -116,7 +116,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
                 </p>
               </div>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
 
