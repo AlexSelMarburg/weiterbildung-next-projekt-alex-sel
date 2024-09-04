@@ -13,26 +13,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model user {
   email           String            @id @unique
-  BookmarkedMovie BookmarkedMovie[]
-  Rating          Rating[]
+  BookmarkedMovie bookmarkedMovie[]
+  rating          rating[]
 }
 
-model BookmarkedMovie {
+model bookmarkedMovie {
   movieID   Int
   userEmail String
 
-  User User @relation(fields: [userEmail], references: [email])
+  User user @relation(fields: [userEmail], references: [email])
 
   @@id([movieID, userEmail])
 }
 
-model Rating {
+model rating {
   id        String  @id @default(cuid())
   rated     Boolean @default(false)
   rating    Int?
-  User      User    @relation(fields: [userEmail], references: [email])
+  User      user    @relation(fields: [userEmail], references: [email])
   userEmail String
   movieID   Int
 }
