@@ -25,7 +25,7 @@ export default function BookmarkedMovies({
   }
 
   return (
-    <div id="bookmarked-movies">
+    <div id="bookmarked-movies-container">
       <div className="pagination">
         <button
           className="left"
@@ -45,7 +45,7 @@ export default function BookmarkedMovies({
           <MdKeyboardArrowRight />
         </button>
       </div>
-      <div className="bookmarked-movie-container">
+      <div className="bookmarked-movie">
         <BookmarkedMovieCard bookmark={bookmarks[bookmark]} />
       </div>
     </div>
