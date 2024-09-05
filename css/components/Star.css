@@ -5,9 +5,9 @@
   cursor: pointer;
 
   svg {
-    stroke: var(--accent-color-4);
+    stroke: var(--accent-color-2);
     &.full {
-      fill: var(--accent-color-4);
+      fill: var(--accent-color-2);
     }
   }
 }
