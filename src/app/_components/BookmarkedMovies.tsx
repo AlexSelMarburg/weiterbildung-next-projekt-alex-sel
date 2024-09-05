@@ -25,7 +25,7 @@ export default function BookmarkedMovies({
   }
 
   return (
-    <div className="bookmarked-movies">
+    <div id="bookmarked-movies">
       <div className="pagination">
         <button
           className="left"
