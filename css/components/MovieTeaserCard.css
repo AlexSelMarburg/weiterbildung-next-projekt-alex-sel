@@ -25,7 +25,7 @@
     position: absolute;
     top: 0.7rem;
     right: 0.7rem;
-    color: var(--accent-color-4);
+    color: var(--accent-color-2);
     font-size: 3.25rem;
     z-index: 2;
   }

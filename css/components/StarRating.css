@@ -1,0 +1,14 @@
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star-container {
+  display: flex;
+}
+
+.star-rating-text {
+  color: var(--accent-color-1);
+  font-size: var(--step-2);
+}

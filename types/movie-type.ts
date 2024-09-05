@@ -33,6 +33,7 @@ export type DetailedMovie = {
   vote_average: number;
   release_date: string;
   runtime: number;
+  vote_count: number;
 };
 
 export type BookmarkedMovie = {

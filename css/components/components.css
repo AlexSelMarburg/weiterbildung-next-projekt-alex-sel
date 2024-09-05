@@ -9,3 +9,7 @@
 @import "./MovieTeaserCard.css";
 @import "./MovieTrailerIFrame.css";
 @import "./LoadAdditionalMovies.css";
+@import "./BookmarkedMovies.css";
+@import "./BookmarkedMovieCard.css";
+@import "./StarRating.css";
+@import "./Star.css";

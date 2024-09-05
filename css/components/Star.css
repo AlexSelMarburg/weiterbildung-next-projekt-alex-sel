@@ -1,0 +1,13 @@
+.star {
+  width: var(--step-2);
+  height: var(--step-2);
+  display: block;
+  cursor: pointer;
+
+  svg {
+    stroke: var(--accent-color-4);
+    &.full {
+      fill: var(--accent-color-4);
+    }
+  }
+}
