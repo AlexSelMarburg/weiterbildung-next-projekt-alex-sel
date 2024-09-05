@@ -99,3 +99,53 @@ export async function getAllUserBookmarks(userEmail: string) {
   });
   return bookmarks;
 }
+
+export async function setBookmarkRaiting(
+  userEmail: string,
+  movieID: number,
+  raiting: number
+) {
+  await prisma.bookmarkedMovie.updateMany({
+    where: {
+      userEmail,
+      movieID,
+    },
+    data: {
+      raiting,
+      raited: true,
+    },
+  });
+}
+
+export async function setFormBookmarkRaiting(
+  prevState: unknown,
+  formData: FormData
+) {
+  console.log("setFormBookmarkRaiting", formData);
+
+  try {
+    const userEmail = String(formData.get("userEmail"));
+    const movieID = Number(formData.get("movieID"));
+    const raiting = Number(formData.get("rating"));
+    console.log("RATING::::", raiting);
+    await setBookmarkRaiting(userEmail, movieID, raiting);
+    revalidatePath(`/movies/${movieID}`);
+    return {
+      message: "Raiting gesetzt!",
+      status: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return { message: "Ein Fehler ist aufgetreten!", status: 500 };
+  }
+}
+
+export async function getBookmarkRaiting(userEmail: string, movieID: number) {
+  const bookmark = await prisma.bookmarkedMovie.findFirst({
+    where: {
+      userEmail,
+      movieID,
+    },
+  });
+  return bookmark?.raiting;
+}

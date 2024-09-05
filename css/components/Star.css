@@ -5,9 +5,25 @@
   cursor: pointer;
 
   svg {
-    stroke: var(--accent-color-2);
+    stroke: var(--accent-color-4);
     &.full {
-      fill: var(--accent-color-2);
+      fill: var(--accent-color-4);
+    }
+  }
+}
+
+/* test */
+.star-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: relative;
+
+  &:disabled {
+    cursor: not-allowed;
+    svg {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
   }
 }

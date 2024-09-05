@@ -55,7 +55,7 @@ export default function BookmarkedMovieCard({
                 </p>
               </div>
               <div className="my-stars-raiting">
-                <StarRating />
+                <StarRating bookmark={bookmark} />
               </div>
             </div>
           </div>
