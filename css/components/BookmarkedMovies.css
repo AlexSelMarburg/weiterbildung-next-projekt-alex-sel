@@ -44,6 +44,11 @@
       background-color: var(--accent-color-4);
       cursor: pointer;
     }
+
+    &:disabled {
+      background-color: var(--light-grey-color);
+      cursor: not-allowed;
+    }
   }
 
   span {

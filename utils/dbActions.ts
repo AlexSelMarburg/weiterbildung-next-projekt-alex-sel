@@ -96,7 +96,11 @@ export async function getAllUserBookmarks(userEmail: string) {
     where: {
       userEmail,
     },
+    orderBy: {
+      movieID: "desc",
+    },
   });
+
   return bookmarks;
 }
 
@@ -128,6 +132,7 @@ export async function setFormBookmarkRaiting(
     const title = String(formData.get("title"));
     await setBookmarkRaiting(userEmail, movieID, raiting);
 
+    revalidatePath(`/bookmarks`);
     return {
       message: `Bewertung ${raiting} für ${title} gespeichert`,
       status: 200,

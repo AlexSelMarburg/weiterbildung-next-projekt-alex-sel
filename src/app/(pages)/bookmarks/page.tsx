@@ -25,7 +25,6 @@ export default async function AboutPage() {
   }
 
   let bookmarks = await getAllUserBookmarks(session.user.email);
-
   if (bookmarks.length === 0) {
     return (
       <main className="about-page">

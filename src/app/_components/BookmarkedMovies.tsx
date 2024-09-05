@@ -13,7 +13,6 @@ export default function BookmarkedMovies({
   bookmarks: BookmarkedMovie[];
 }) {
   const [bookmark, setBookmark] = useState(0);
-  console.log(bookmarks);
 
   function handleLeftClick() {
     if (bookmark > 0) {
