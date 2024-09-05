@@ -1,9 +1,12 @@
 "use client";
 
-import type { BookmarkedMovie } from "@/types/movie-type";
-import { useState } from "react";
+import type { BookmarkedMovie, DetailedMovie } from "@/types/movie-type";
+import { useEffect, useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { fetchMovie } from "../(pages)/movies/action";
 import BookmarkedMovieCard from "./BookmarkedMovieCard";
+
+export const revalidate = 0;
 
 export default function BookmarkedMovies({
   bookmarks,
@@ -11,6 +14,21 @@ export default function BookmarkedMovies({
   bookmarks: BookmarkedMovie[];
 }) {
   const [bookmark, setBookmark] = useState(0);
+  const [movie, setMovie] = useState(null);
+  console.log(bookmarks);
+
+  useEffect(() => {
+    async function fetchBookmarkedMovie(id: string) {
+      try {
+        const movie: DetailedMovie = await fetchMovie(id);
+        console.dir("movie", movie);
+
+        // setMovie(movie);
+      } catch (error) {}
+    }
+
+    fetchBookmarkedMovie(bookmarks[bookmark].movieID + "");
+  }, [bookmarks, bookmark]);
 
   function handleLeftClick() {
     if (bookmark > 0) {
@@ -25,7 +43,7 @@ export default function BookmarkedMovies({
   }
 
   return (
-    <div id="bookmarked-movies-container">
+    <div id="bookmarked-movies">
       <div className="pagination">
         <button
           className="left"

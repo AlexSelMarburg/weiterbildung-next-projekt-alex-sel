@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "About",
 };
 
+export const revalidate = 1;
+
 export default async function AboutPage() {
   const session = await getServerSession();
 

@@ -20,8 +20,8 @@ export const linkTargets = [
     url: "/movies",
   },
   {
-    text: "About",
-    url: "/about",
+    text: "Lesezeichen",
+    url: "/bookmarks",
   },
 ] satisfies LinkTarget[];
 

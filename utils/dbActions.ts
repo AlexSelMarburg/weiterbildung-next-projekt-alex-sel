@@ -121,17 +121,15 @@ export async function setFormBookmarkRaiting(
   prevState: unknown,
   formData: FormData
 ) {
-  console.log("setFormBookmarkRaiting", formData);
-
   try {
     const userEmail = String(formData.get("userEmail"));
     const movieID = Number(formData.get("movieID"));
     const raiting = Number(formData.get("rating"));
-    console.log("RATING::::", raiting);
+    const title = String(formData.get("title"));
     await setBookmarkRaiting(userEmail, movieID, raiting);
-    revalidatePath(`/movies/${movieID}`);
+
     return {
-      message: "Raiting gesetzt!",
+      message: `Bewertung ${raiting} für ${title} gespeichert`,
       status: 200,
     };
   } catch (error) {

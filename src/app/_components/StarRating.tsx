@@ -1,69 +1,18 @@
-// import { useState } from "react";
-// import Star from "@/src/app/_components/Star";
-// import { BookmarkedMovie } from "@/types/movie-type";
-
-// type Props = {
-//   bookmark: BookmarkedMovie;
-//   maxRating?: number;
-//   messages?: string[];
-//   defaultRating?: number;
-// };
-
-// export default function StarRating({
-//   maxRating = 10,
-//   messages = [],
-//   defaultRating = 0,
-//   bookmark,
-// }: Props) {
-//   const [rating, setRating] = useState(defaultRating);
-//   const [tempRating, setTempRating] = useState(bookmark.raiting || 0);
-
-//   console.log("bookmark from star-rating", bookmark);
-
-//   function handleRating(rating: number) {
-//     setRating(rating);
-//     // onSetRating?.(rating);
-//   }
-
-//   return (
-//     <form
-//       className="star-rating"
-//       onSubmit={(e) => e.preventDefault()}
-//       // action={}
-//     >
-//       <input type="hidden" name="rating" value={rating} />
-//       <div className="star-container">
-//         {Array.from({ length: maxRating }, (_, i) => (
-//           <Star
-//             key={i}
-//             // onRate={() => handleRating(i + 1)}
-//             full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
-//             onHoverIn={() => setTempRating(i + 1)}
-//             onLeave={() => setTempRating(0)}
-//           />
-//         ))}
-//       </div>
-//       <p className="star-rating-text">
-//         {messages.length === maxRating
-//           ? messages[tempRating ? tempRating - 1 : rating - 1]
-//           : tempRating || rating || ""}
-//       </p>
-//     </form>
-//   );
-// }
-
 import { useEffect, useRef, useState } from "react";
 import Star from "@/src/app/_components/Star";
-import { BookmarkedMovie } from "@/types/movie-type";
+import { BookmarkedMovie, DetailedMovie } from "@/types/movie-type";
 import { useFormState } from "react-dom";
 import { setFormBookmarkRaiting } from "@/utils/dbActions";
 import toast from "react-hot-toast";
+
+export const revalidate = 0;
 
 type Props = {
   bookmark: BookmarkedMovie;
   maxRating?: number;
   messages?: string[];
   defaultRating?: number;
+  movie: DetailedMovie;
 };
 
 const initialState = {
@@ -76,9 +25,10 @@ export default function StarRating({
   messages = [],
   defaultRating = 0,
   bookmark,
+  movie,
 }: Props) {
-  const [rating, setRating] = useState(defaultRating);
-  const [tempRating, setTempRating] = useState(bookmark.raiting || 0);
+  const [rating, setRating] = useState(bookmark.raiting || defaultRating);
+  const [tempRating, setTempRating] = useState(defaultRating);
   const [state, formAction] = useFormState(
     setFormBookmarkRaiting,
     initialState
@@ -96,29 +46,22 @@ export default function StarRating({
     }
   }, [state.status, state.message]);
 
-  console.log("bookmark from star-rating", bookmark);
-
-  function handleRating(rating: number) {
-    setRating(rating);
-    // onSetRating?.(rating);
-  }
+  useEffect(() => {
+    setRating(bookmark.raiting || 0);
+  }, [bookmark.raiting]);
 
   return (
-    <form
-      className="star-rating"
-      // onSubmit={(e) => e.preventDefault()}
-      action={formAction}
-      ref={formRef}
-    >
+    <form className="star-rating" action={formAction} ref={formRef}>
       <input type="hidden" name="rating" value={rating} />
       <input type="hidden" name="userEmail" value={bookmark.userEmail} />
       <input type="hidden" name="movieID" value={bookmark.movieID} />
+      <input type="hidden" name="title" value={movie.title} />
 
       <div className="star-container">
         {Array.from({ length: maxRating }, (_, i) => (
           <Star
             key={i}
-            onRate={() => handleRating(i + 1)}
+            onRate={() => setRating(i + 1)}
             full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
             onHoverIn={() => setTempRating(i + 1)}
             onLeave={() => setTempRating(0)}

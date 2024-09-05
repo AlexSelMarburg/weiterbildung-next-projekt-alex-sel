@@ -4,7 +4,7 @@ import { fetchMovie } from "../(pages)/movies/action";
 import Image from "next/image";
 import StarRating from "./StarRating";
 
-export const revalidate = 60;
+export const revalidate = 0;
 export default function BookmarkedMovieCard({
   bookmark,
 }: {
@@ -21,8 +21,6 @@ export default function BookmarkedMovieCard({
 
     fetchBookmarkedMovie(bookmark.movieID + "");
   }, [bookmark]);
-
-  console.log("MOVIE:", movie);
 
   if (!movie) return null;
 
@@ -50,12 +48,12 @@ export default function BookmarkedMovieCard({
             <div className="ratings">
               <div className="tmdb-raiting">
                 <p>
-                  TMDB: {movie.vote_average}{" "}
+                  TMDB: {movie.vote_average.toFixed(1)}{" "}
                   <span>(votes: {movie.vote_count})</span>
                 </p>
               </div>
               <div className="my-stars-raiting">
-                <StarRating bookmark={bookmark} />
+                <StarRating bookmark={bookmark} movie={movie} />
               </div>
             </div>
           </div>
