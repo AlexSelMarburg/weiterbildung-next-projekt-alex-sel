@@ -27,7 +27,7 @@ export default function StarRating({
   bookmark,
   movie,
 }: Props) {
-  const [rating, setRating] = useState(bookmark.raiting || defaultRating);
+  const [rating, setRating] = useState(bookmark?.raiting || defaultRating);
   const [tempRating, setTempRating] = useState(defaultRating);
   const [state, formAction] = useFormState(
     setFormBookmarkRaiting,
@@ -46,16 +46,17 @@ export default function StarRating({
     }
   }, [state.status, state.message]);
 
+  const curRaiting = bookmark?.raiting || 0;
   useEffect(() => {
-    setRating(bookmark.raiting || 0);
-  }, [bookmark.raiting]);
+    setRating(bookmark?.raiting || 0);
+  }, [curRaiting, bookmark?.raiting, state.status, state.message]);
 
   return (
     <form className="star-rating" action={formAction} ref={formRef}>
       <input type="hidden" name="rating" value={rating} />
-      <input type="hidden" name="userEmail" value={bookmark.userEmail} />
-      <input type="hidden" name="movieID" value={bookmark.movieID} />
-      <input type="hidden" name="title" value={movie.title} />
+      <input type="hidden" name="userEmail" value={bookmark?.userEmail} />
+      <input type="hidden" name="movieID" value={bookmark?.movieID} />
+      <input type="hidden" name="title" value={movie?.title} />
 
       <div className="star-container">
         {Array.from({ length: maxRating }, (_, i) => (

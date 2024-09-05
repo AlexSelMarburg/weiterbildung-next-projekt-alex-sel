@@ -23,7 +23,7 @@
 .pagination {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   padding: 10px;
   height: 4rem;
@@ -57,5 +57,41 @@
     min-width: 9rem;
     text-align: center;
     color: var(--primary-font-color);
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      display: inline-block;
+      text-align: left;
+      font-size: var(--step-1);
+      color: var(--accent-color-1);
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .pagination {
+    gap: 0.5rem;
+    justify-content: space-between;
+
+    button {
+      font-size: 1.8rem;
+      height: 40px;
+      width: 40px;
+    }
+
+    span {
+      min-width: 6rem;
+    }
+
+    .checkbox-container {
+      span {
+        display: none;
+      }
+    }
   }
 }
