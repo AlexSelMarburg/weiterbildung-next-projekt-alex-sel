@@ -1,10 +1,9 @@
 "use client";
 
-import type { BookmarkedMovie, DetailedMovie } from "@/types/movie-type";
+import type { BookmarkedMovie } from "@/types/movie-type";
 import { useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import BookmarkedMovieCard from "./BookmarkedMovieCard";
-import { h4 } from "framer-motion/client";
 import CustomCheckbox from "./CustomCheckbox";
 
 export const revalidate = 0;
@@ -18,7 +17,7 @@ export default function BookmarkedMovies({
   const [showRated, setShowRated] = useState(true);
 
   const filteredBookmarks = showRated
-    ? bookmarks.filter((bookmark) => !bookmark.rated)
+    ? bookmarks.filter((bookmark) => !bookmark?.rated)
     : bookmarks;
 
   function handleLeftClick() {

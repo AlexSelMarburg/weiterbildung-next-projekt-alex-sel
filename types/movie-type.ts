@@ -40,5 +40,5 @@ export type BookmarkedMovie = {
   movieID: number;
   userEmail: string;
   rating: number | null;
-  raited: boolean;
+  rated: boolean;
 };
