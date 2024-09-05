@@ -39,6 +39,6 @@ export type DetailedMovie = {
 export type BookmarkedMovie = {
   movieID: number;
   userEmail: string;
-  raiting: number | null;
+  rating: number | null;
   raited: boolean;
 };

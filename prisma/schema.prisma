@@ -22,8 +22,8 @@ model User {
 model BookmarkedMovie {
   movieID   Int
   userEmail String
-  raiting   Int?
-  raited    Boolean @default(false)
+  rating    Int?
+  rated     Boolean @default(false)
 
   User User @relation(fields: [userEmail], references: [email])
 

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Star from "@/src/app/_components/Star";
 import { BookmarkedMovie, DetailedMovie } from "@/types/movie-type";
 import { useFormState } from "react-dom";
-import { setFormBookmarkRaiting } from "@/utils/dbActions";
+import { setFormBookmarkRating } from "@/utils/dbActions";
 import toast from "react-hot-toast";
 
 export const revalidate = 0;
@@ -27,12 +27,9 @@ export default function StarRating({
   bookmark,
   movie,
 }: Props) {
-  const [rating, setRating] = useState(bookmark?.raiting || defaultRating);
+  const [rating, setRating] = useState(bookmark?.rating || defaultRating);
   const [tempRating, setTempRating] = useState(defaultRating);
-  const [state, formAction] = useFormState(
-    setFormBookmarkRaiting,
-    initialState
-  );
+  const [state, formAction] = useFormState(setFormBookmarkRating, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
@@ -46,10 +43,10 @@ export default function StarRating({
     }
   }, [state.status, state.message]);
 
-  const curRaiting = bookmark?.raiting || 0;
+  const curRating = bookmark?.rating || 0;
   useEffect(() => {
-    setRating(bookmark?.raiting || 0);
-  }, [curRaiting, bookmark?.raiting, state.status, state.message]);
+    setRating(bookmark?.rating || 0);
+  }, [curRating, bookmark?.rating, state.status, state.message]);
 
   return (
     <form className="star-rating" action={formAction} ref={formRef}>

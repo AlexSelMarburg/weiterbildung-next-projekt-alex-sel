@@ -104,10 +104,10 @@ export async function getAllUserBookmarks(userEmail: string) {
   return bookmarks;
 }
 
-export async function setBookmarkRaiting(
+export async function setBookmarkRating(
   userEmail: string,
   movieID: number,
-  raiting: number
+  rating: number
 ) {
   await prisma.bookmarkedMovie.updateMany({
     where: {
@@ -115,26 +115,26 @@ export async function setBookmarkRaiting(
       movieID,
     },
     data: {
-      raiting,
-      raited: true,
+      rating,
+      rated: true,
     },
   });
 }
 
-export async function setFormBookmarkRaiting(
+export async function setFormBookmarkRating(
   prevState: unknown,
   formData: FormData
 ) {
   try {
     const userEmail = String(formData.get("userEmail"));
     const movieID = Number(formData.get("movieID"));
-    const raiting = Number(formData.get("rating"));
+    const rating = Number(formData.get("rating"));
     const title = String(formData.get("title"));
-    await setBookmarkRaiting(userEmail, movieID, raiting);
+    await setBookmarkRating(userEmail, movieID, rating);
 
     revalidatePath(`/bookmarks`);
     return {
-      message: `Bewertung ${raiting} für ${title} gespeichert`,
+      message: `Bewertung ${rating} für ${title} gespeichert`,
       status: 200,
     };
   } catch (error) {
@@ -143,12 +143,12 @@ export async function setFormBookmarkRaiting(
   }
 }
 
-export async function getBookmarkRaiting(userEmail: string, movieID: number) {
+export async function getBookmarkRating(userEmail: string, movieID: number) {
   const bookmark = await prisma.bookmarkedMovie.findFirst({
     where: {
       userEmail,
       movieID,
     },
   });
-  return bookmark?.raiting;
+  return bookmark?.rating;
 }

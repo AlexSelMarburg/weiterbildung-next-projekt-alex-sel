@@ -55,11 +55,10 @@
         }
       }
 
-      .raiting-container {
+      .rating-container {
         margin-top: 1.5rem;
         width: 100%;
         min-height: 10rem;
-        /* background-color: gray; */
 
         .logged-in-user {
           p {

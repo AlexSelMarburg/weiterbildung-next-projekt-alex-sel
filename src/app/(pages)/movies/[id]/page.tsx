@@ -9,7 +9,7 @@ import { fetchMovie, fetchMovieVideos } from "@/src/app/(pages)/movies/action";
 
 import { checkIfUserExists, isBookmarkedMovie } from "@/utils/dbActions";
 import SetBookMarkForm from "@/src/app/_components/SetBookMarkForm";
-import { notFound } from "next/navigation";
+
 type Props = {
   params: {
     id: string;
@@ -89,7 +89,7 @@ export default async function MovieDetails({ params: { id } }: Props) {
           <Link className="default-link" href={`/movies`}>
             Zurück zu der Filmsuche
           </Link>
-          <div className="raiting-container">
+          <div className="rating-container">
             {session && session.user?.email && movie ? (
               <div className="logged-in-user">
                 <p>

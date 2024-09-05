@@ -46,13 +46,13 @@ export default function BookmarkedMovieCard({
         <div className="actions">
           <div className="left">
             <div className="ratings">
-              <div className="tmdb-raiting">
+              <div className="tmdb-rating">
                 <p>
                   TMDB: {movie.vote_average.toFixed(1)}{" "}
                   <span>(votes: {movie.vote_count})</span>
                 </p>
               </div>
-              <div className="my-stars-raiting">
+              <div className="my-stars-rating">
                 <StarRating bookmark={bookmark} movie={movie} />
               </div>
             </div>

@@ -52,7 +52,7 @@
           justify-content: center;
           gap: 4px;
 
-          .tmdb-raiting {
+          .tmdb-rating {
             p {
               text-align: left;
               color: var(--accent-color-1);

@@ -18,7 +18,7 @@ export default function BookmarkedMovies({
   const [showRated, setShowRated] = useState(true);
 
   const filteredBookmarks = showRated
-    ? bookmarks.filter((bookmark) => !bookmark.raited)
+    ? bookmarks.filter((bookmark) => !bookmark.rated)
     : bookmarks;
 
   function handleLeftClick() {
