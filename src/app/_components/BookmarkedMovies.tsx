@@ -13,6 +13,9 @@ export default function BookmarkedMovies({
   bookmarks: BookmarkedMovie[];
 }) {
   const [bookmark, setBookmark] = useState(0);
+  const [showRated, setShowRated] = useState(true);
+
+  const unratedBookmarks = bookmarks.filter((bookmark) => !bookmark.raited);
 
   function handleLeftClick() {
     if (bookmark > 0) {
@@ -20,8 +23,14 @@ export default function BookmarkedMovies({
     }
   }
 
+  console.log("showRated: ", showRated);
+
   function handleRightClick() {
-    if (bookmark < bookmarks.length - 1) {
+    if (
+      showRated
+        ? bookmark < unratedBookmarks.length - 1
+        : bookmark < bookmarks.length - 1
+    ) {
       setBookmark(bookmark + 1);
     }
   }
@@ -37,7 +46,8 @@ export default function BookmarkedMovies({
           <MdKeyboardArrowLeft />
         </button>
         <span className="movies-count">
-          {bookmark + 1} von {bookmarks.length}
+          {showRated ? bookmark + 1 : bookmark + 1} von{" "}
+          {showRated ? unratedBookmarks.length : bookmarks.length}
         </span>
         <button
           className="right"
@@ -46,9 +56,25 @@ export default function BookmarkedMovies({
         >
           <MdKeyboardArrowRight />
         </button>
+
+        <div>
+          <input
+            type="checkbox"
+            checked={showRated}
+            onChange={() => {
+              setBookmark(0);
+              setShowRated(!showRated);
+            }}
+          />{" "}
+          rated
+        </div>
       </div>
       <div className="bookmarked-movie">
-        <BookmarkedMovieCard bookmark={bookmarks[bookmark]} />
+        <BookmarkedMovieCard
+          bookmark={
+            showRated ? unratedBookmarks[bookmark] : bookmarks[bookmark]
+          }
+        />
       </div>
     </div>
   );
