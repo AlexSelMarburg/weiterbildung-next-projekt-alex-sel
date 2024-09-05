@@ -54,9 +54,7 @@ export default function BookmarkedMovieCard({
                   <span>(votes: {movie.vote_count})</span>
                 </p>
               </div>
-              <div className="my-stars-raiting">
-                <StarRating />
-              </div>
+              <div className="my-stars-raiting">{/* <StarRating /> */}</div>
             </div>
           </div>
           <div className="right">
