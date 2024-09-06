@@ -16,10 +16,15 @@ export default function BookmarkedMovieCard({
       try {
         const movie: DetailedMovie = await fetchMovie(id);
         setMovie(movie);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+        return null;
+      }
     }
 
-    fetchBookmarkedMovie(bookmark.movieID + "");
+    if (bookmark?.movieID) {
+      fetchBookmarkedMovie(bookmark.movieID + "");
+    }
   }, [bookmark]);
 
   if (!movie) return null;

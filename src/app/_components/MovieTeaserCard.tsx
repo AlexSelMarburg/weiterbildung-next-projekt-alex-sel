@@ -8,26 +8,14 @@ import { FaBookmark } from "react-icons/fa6";
 type Props = {
   movie: Movie;
   isBookmarked: boolean;
-  rating?: number;
 };
 
 const variants = {
   hidden: { opacity: 0, scale: 0.96 },
   visible: { opacity: 1, scale: 1 },
 };
-export default function MovieTeaserCard({
-  movie,
-  isBookmarked,
-  rating,
-}: Props) {
+export default function MovieTeaserCard({ movie, isBookmarked }: Props) {
   const hasPosterPoster = movie.poster_path !== null;
-
-  const stars = [];
-  if (rating) {
-    for (let i = 0; i < rating; i++) {
-      stars.push(<li key={i}>⭐</li>);
-    }
-  }
 
   return (
     <motion.div
@@ -38,7 +26,6 @@ export default function MovieTeaserCard({
       viewport={{ amount: 0 }}
       className={`movie-teaser-card ${!hasPosterPoster ? "has-no-poster" : ""}`}
     >
-      {rating && <ul className="user-rating-display">{stars}</ul>}
       {isBookmarked && <FaBookmark className="bookmark-icon" />}
       {hasPosterPoster && (
         <Image
