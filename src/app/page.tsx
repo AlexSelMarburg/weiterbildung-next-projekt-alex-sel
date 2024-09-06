@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import altHomeImageURL from "@/public/img/fallback-hero-bg.jpeg";
+import popcorn from "@/public/img/popcorn.png";
 import { fetchpopularMovies } from "@/src/app/(pages)/movies/action";
 
 export const revalidate = 600;
@@ -51,7 +52,13 @@ export default async function HomePage() {
           </ul>
         </div>
         <div className="right-container">
-          <p>Lorem ipsum</p>
+          <Image
+            src={popcorn}
+            alt="test"
+            priority={true}
+            className="popcorn-img"
+            quality={60}
+          />
         </div>
       </div>
     </main>

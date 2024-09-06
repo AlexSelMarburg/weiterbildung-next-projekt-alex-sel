@@ -48,8 +48,31 @@
     }
 
     .right-container {
-      text-align: center;
+      .popcorn-img {
+        /* -webkit-filter: drop-shadow(5px 5px 5px #222);
+        filter: drop-shadow(5px 5px 5px #222); */
+
+        animation: pulse 4s infinite;
+      }
     }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    scale: 1;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+  }
+  50% {
+    scale: 1.05;
+    -webkit-filter: drop-shadow(8px 8px 8px #444444);
+    filter: drop-shadow(8px 8px 8px #444444);
+  }
+  100% {
+    scale: 1;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
   }
 }
 
