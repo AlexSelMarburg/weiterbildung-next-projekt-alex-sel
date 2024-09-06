@@ -32,6 +32,20 @@ export const fetchMovies = async (searchTerm = "", page = 1) => {
   }
 };
 
+export async function fetchpopularMovies(page = 1) {
+  const { data } = await fetchMoviesData.get("movie/popular", {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_TMDB_API_KEY,
+      // language: "de-DE",
+      page: page,
+    },
+  });
+  return {
+    movies: data.results as Movie[],
+    pages: data.total_pages as number,
+  };
+}
+
 export async function fetchMovie(id: string) {
   try {
     const { data } = await fetchMoviesData.get(`movie/${id}`, {

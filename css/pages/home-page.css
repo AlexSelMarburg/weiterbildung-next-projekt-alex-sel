@@ -18,6 +18,8 @@
     padding: 20px;
     width: 100%;
     height: calc(100dvh - var(--header-height));
+    /* dark glasmorphism bg color */
+    background: rgba(0, 0, 0, 0.35);
 
     .left-container,
     .right-container {
@@ -47,7 +49,6 @@
 
     .right-container {
       text-align: center;
-      /* border: 1px solid #fff; */
     }
   }
 }

@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 import altHomeImageURL from "@/public/img/fallback-hero-bg.jpeg";
-import { fetchMovies } from "@/src/app/(pages)/movies/action";
+import { fetchpopularMovies } from "@/src/app/(pages)/movies/action";
 
 export const revalidate = 600;
 
 export default async function HomePage() {
-  const { movies } = await fetchMovies("");
+  const { movies } = await fetchpopularMovies();
   const firstMovieHasBackdrop = movies.find((movie) => movie.backdrop_path);
 
   return (
@@ -21,7 +21,7 @@ export default async function HomePage() {
         fill
         priority={true}
         className="home-page__bg"
-        quality={80}
+        quality={60}
       />
       <div className="home-page-content">
         <div className="left-container">
@@ -45,8 +45,7 @@ export default async function HomePage() {
             </li>
             <li>
               <p>
-                <span className="highlight">Rate</span> and{" "}
-                <span className="highlight">comment</span> your favorite movies
+                <span className="highlight">Rate</span> your favorite movies
               </p>
             </li>
           </ul>
