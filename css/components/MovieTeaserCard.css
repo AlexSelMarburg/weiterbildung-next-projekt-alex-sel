@@ -9,6 +9,8 @@
   flex-direction: column;
   justify-content: center;
 
+  --actions-height: 3.6rem;
+
   h3 {
     color: var(--accent-color-3);
   }
@@ -25,9 +27,34 @@
     position: absolute;
     top: 0.7rem;
     right: 0.7rem;
-    color: var(--accent-color-2);
+    color: var(--accent-color-4);
     font-size: 3.25rem;
     z-index: 2;
+  }
+
+  .user-rating {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.7rem;
+    color: var(--primary-font-color);
+    font-size: 1.5rem;
+    z-index: 2;
+  }
+
+  .user-rating-display {
+    position: absolute;
+    bottom: calc(var(--actions-height) + 0.5rem);
+    right: 0rem;
+    font-size: var(--step-0);
+    z-index: 2;
+    width: 100%;
+    li {
+      list-style: none;
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .movie-teaser-card__image {
@@ -41,7 +68,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3.5rem;
+    height: var(--actions-height);
     display: flex;
     align-items: center;
     padding: 5px 10px;

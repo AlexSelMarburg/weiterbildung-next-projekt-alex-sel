@@ -32,15 +32,23 @@ export default function Movies({
             //   (movie: Movie) =>
             //     !bookmarks.some((bookmark) => bookmark.movieID === movie.id)
             // )
-            .map((movie: Movie) => (
-              <MovieTeaserCard
-                key={movie.id}
-                movie={movie}
-                isBookmarked={bookmarks.some(
-                  (bookmark) => bookmark.movieID === movie.id
-                )}
-              />
-            ))}
+            .map((movie: Movie) => {
+              let bookmarkIndex = undefined;
+              const bookmarkedMovie = bookmarks.find((bookmark, i) => {
+                if (bookmark.movieID === movie.id) {
+                  bookmarkIndex = i;
+                  return true;
+                }
+              });
+              return (
+                <MovieTeaserCard
+                  key={movie.id}
+                  movie={movie}
+                  rating={bookmarkIndex && bookmarks[bookmarkIndex]?.rating}
+                  isBookmarked={bookmarkedMovie ? true : false}
+                />
+              );
+            })}
         </div>
       )}
       {movies && movies.length > 0 && (
