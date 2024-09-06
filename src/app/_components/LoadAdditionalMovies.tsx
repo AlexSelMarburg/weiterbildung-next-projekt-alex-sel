@@ -46,15 +46,22 @@ export default function LoadAdditionalMovies({
   return (
     <>
       <div className="movies-grid">
-        {data.movies.map((movie: Movie, index) => (
-          <MovieTeaserCard
-            key={movie.id + index + ""}
-            movie={movie}
-            isBookmarked={bookmarks.some(
-              (bookmark) => bookmark.movieID === movie.id
-            )}
-          />
-        ))}
+        {data.movies
+          .filter(
+            (movie: Movie) =>
+              !bookmarks.some(
+                (bookmark) => bookmark.movieID === movie.id && bookmark.rated
+              )
+          )
+          .map((movie: Movie, index) => (
+            <MovieTeaserCard
+              key={movie.id + index + ""}
+              movie={movie}
+              isBookmarked={bookmarks.some(
+                (bookmark) => bookmark.movieID === movie.id
+              )}
+            />
+          ))}
       </div>
 
       <div

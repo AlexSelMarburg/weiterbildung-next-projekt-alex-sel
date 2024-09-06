@@ -21,6 +21,8 @@ export default function Movies({
   const [movies, setMovies] = useState<Movie[]>([]);
   useMoviesSearch(debouncedTerm, setMovies);
 
+  const unratedBookmarks = bookmarks.filter((bookmark) => !bookmark.rated);
+
   return (
     <>
       <MoviesSearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -28,12 +30,12 @@ export default function Movies({
       {movies.length > 0 && (
         <div className="movies-grid">
           {movies
-            // .filter(
-            //   (movie: Movie) =>
-            //     !bookmarks.some(
-            //       (bookmark) => bookmark.movieID === movie.id && bookmark.rated
-            //     )
-            // )
+            .filter(
+              (movie: Movie) =>
+                !bookmarks.some(
+                  (bookmark) => bookmark.movieID === movie.id && bookmark.rated
+                )
+            )
             .map((movie: Movie) => (
               <MovieTeaserCard
                 key={movie.id}
